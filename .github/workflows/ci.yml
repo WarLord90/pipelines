@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches: ["main"]    # Cada vez que subas cambios a main
+  pull_request: {}        # También en PR
+  schedule:
+    - cron: "0 12 * * *"  # Ejecución diaria 12:00 UTC
+
+jobs:
+  test-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run ETL
+        run: python -m pipelines.flow_prefect --src data/input.csv --dst data/output_prefect.csv

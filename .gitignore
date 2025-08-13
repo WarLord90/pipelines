@@ -1,0 +1,22 @@
+# Entornos virtuales
+.venv/
+.venv311/
+venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de datos temporales o generados
+data/output*.csv
+output*.csv
+
+# Archivos de configuración local
+.env
+*.log
+
+# Configuración de sistemas operativos
+.DS_Store
+Thumbs.db
